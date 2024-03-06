@@ -39,6 +39,9 @@ target 'SolaRo' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  #install MQTT Client Dependencies
+  pod 'MQTTClient'
+
   target 'SolaRoTests' do
     inherit! :complete
     # Pods for testing
@@ -52,4 +55,6 @@ target 'SolaRo' do
       :mac_catalyst_enabled => false
     )
   end
+
+  
 end
