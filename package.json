@@ -11,9 +11,12 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.22.3",
+    "nativewind": "^4.0.36",
     "react": "18.2.0",
     "react-native": "0.73.5",
-    "sp-react-native-mqtt": "^0.5.1"
+    "react-native-reanimated": "^3.7.2",
+    "sp-react-native-mqtt": "^0.5.1",
+    "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
