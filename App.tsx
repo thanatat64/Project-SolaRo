@@ -26,6 +26,40 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import './src/styles/global.css';
+
+import MQTT from 'sp-react-native-mqtt';
+
+/* create mqtt client */
+MQTT.createClient({
+  uri: 'mqtt://test.mosquitto.org:1883',
+  clientId: 'your_client_id',
+})
+  .then(function (client) {
+    client.on('closed', function () {
+      console.log('mqtt.event.closed');
+    });
+
+    client.on('error', function (msg) {
+      console.log('mqtt.event.error', msg);
+    });
+
+    client.on('message', function (msg) {
+      console.log('mqtt.event.message', msg);
+    });
+
+    client.on('connect', function () {
+      console.log('connected');
+      client.subscribe('/data', 0);
+      client.publish('/data', 'test', 0, false);
+    });
+
+    client.connect();
+  })
+  .catch(function (err) {
+    console.log(err);
+  });
+
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -76,7 +110,8 @@ function App(): React.JSX.Element {
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
+          }}
+          className="flex-center">
           <Section title="Step One">
             Edit <Text style={styles.highlight}>App.tsx</Text> to change this
             screen and then come back to see your edits.
@@ -87,8 +122,23 @@ function App(): React.JSX.Element {
           <Section title="Debug">
             <DebugInstructions />
           </Section>
-          <Section title="Learn More">
-            eieieieieieieieieieieieieieieieie
+          <Section title="Learn More">eiei 12345</Section>
+          <Section title="Test MQTT">
+            <Text className='text-yellow-500'>
+              Hello world MQTT
+            </Text>
+            {"\n\n"}
+            <Text className='text-green-500'>
+              Battery :
+            </Text>
+            {"\n"}
+            <Text className='text-blue-500'>
+              Water :
+            </Text>
+            {"\n"}
+            <Text className='text-black-300'>
+              Sensor :
+            </Text>
           </Section>
           <LearnMoreLinks />
         </View>
