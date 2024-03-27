@@ -16,7 +16,8 @@
     "react-native": "0.73.5",
     "react-native-reanimated": "^3.7.2",
     "sp-react-native-mqtt": "^0.5.1",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "underscore": "^1.13.6"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
